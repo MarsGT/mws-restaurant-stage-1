@@ -1,6 +1,6 @@
 @charset "utf-8";
 :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, 'Liberation Sans', 'Hiragino Sans GB', 'Source Han Sans CN Normal', 'Microsoft YaHei', '微软雅黑', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, 'Liberation Sans', 'Hiragino Sans GB', 'Source Han Sans CN Normal', 'Microsoft YaHei', '微软雅黑', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif !important;
     font-size: 10pt;
     color: #333;
     line-height: 1.5;
@@ -40,13 +40,13 @@ a img {
     text-transform: uppercase;
 }
 
-/* ====================== Navigation ====================== */
+/* Navigation */
 
 nav {
     width: 100%;
-    height: 80px;
-    line-height: 80px;
-    background-color: #252831;
+    height: 60px;
+    line-height: 60px;
+    background-color: #2e2930;
     text-align: center;
 }
 
@@ -56,10 +56,8 @@ nav h1 {
 
 nav h1 a {
     color: #fff;
-    font-size: 14pt;
-    font-weight: 200;
-    letter-spacing: 10px;
-    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 5pt;
 }
 
 #breadcrumb {
@@ -68,16 +66,12 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
+    width: 50%;
 }
-
-/* Display list items side by side */
 
 #breadcrumb li {
     display: inline;
 }
-
-/* Add a slash symbol (/) before/behind each list item */
 
 #breadcrumb li+li:before {
     padding: 8px;
@@ -85,76 +79,71 @@ nav h1 a {
     content: "/\00a0";
 }
 
-/* Add a color to all links inside the list */
-
 #breadcrumb li a {
     color: #0275d8;
     text-decoration: none;
 }
-
-/* Add a color on mouse-over */
 
 #breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
 }
 
-/* ====================== Map ====================== */
+/* Map */
 
 #map {
-    height: 400px;
+    height: 50vh;
     width: 100%;
-    background-color: #ccc;
 }
 
-/* ====================== Restaurant Filtering ====================== */
+/* Restaurant Filtering */
 
 .filter-options {
     width: 100%;
-    height: 50px;
+    min-height: 60px;
     background-color: #3397DB;
     align-items: center;
 }
 
 .filter-options h2 {
     color: white;
-    font-size: 1rem;
-    font-weight: normal;
-    line-height: 1;
-    margin: 0 20px;
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 2;
+    margin-left: 10%;
+    display: inline-block;
 }
 
 .filter-options select {
     background-color: white;
     border: 1px solid #fff;
-    font-family: Arial, sans-serif;
     font-size: 11pt;
-    height: 35px;
+    height: 25px;
     letter-spacing: 0;
     margin: 10px;
     padding: 0 10px;
     width: 200px;
 }
 
-/* ====================== Restaurant Listing ====================== */
+/* Restaurant Listing */
 
 #restaurants-list {
-    background-color: #f3f3f3;
-    list-style: outside none none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
     margin: 0;
-    padding: 30px 15px 60px;
-    text-align: center;
+    padding: 30px;
+    background-color: #f3f3f3;
 }
 
 #restaurants-list li {
-    background-color: #fff;
-    border: 2px solid #ccc;
-    font-family: Arial, sans-serif;
-    margin: 15px;
-    min-height: 380px;
+    list-style: none;
+    margin-bottom: 25px;
     padding: 25px;
-    text-align: left;
     width: 270px;
+    min-height: 380px;
+    border: 2px solid #dddcd6;
+    background-color: #fffffc;
 }
 
 #restaurants-list .restaurant-img {
@@ -166,7 +155,6 @@ nav h1 a {
 
 #restaurants-list li h1 {
     color: #f18200;
-    font-family: Arial, sans-serif;
     font-size: 14pt;
     font-weight: 200;
     letter-spacing: 0;
@@ -193,7 +181,7 @@ nav h1 a {
     text-transform: uppercase;
 }
 
-/* ====================== Restaurant Details ====================== */
+/* Restaurant Details */
 
 .inside header {
     position: fixed;
@@ -203,12 +191,12 @@ nav h1 a {
 }
 
 .inside #map-container {
-    background: blue none repeat scroll 0 0;
+    background-color: #4d5aaf;
     position: fixed;
     right: 0;
-    top: 80px;
+    top: 60px;
     width: 50%;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
 }
 
 .inside #map {
