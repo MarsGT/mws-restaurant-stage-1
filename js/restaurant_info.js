@@ -111,12 +111,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     const container = document.getElementById('reviews-container');
     const title = document.createElement('h2');
-    title.innerHTML = 'Reviews';
+    title.innerHTML = '评价详情';
     container.appendChild(title);
 
     if (!reviews) {
         const noReviews = document.createElement('p');
-        noReviews.innerHTML = 'No reviews yet!';
+        noReviews.innerHTML = '- 暂无评价 -';
         container.appendChild(noReviews);
         return;
     }
@@ -141,7 +141,7 @@ createReviewHTML = (review) => {
     li.appendChild(date);
 
     const rating = document.createElement('p');
-    rating.innerHTML = `Rating: ${review.rating}`;
+    rating.innerHTML = `评分: ${review.rating}`;
     li.appendChild(rating);
 
     const comments = document.createElement('p');
