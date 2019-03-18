@@ -1,22 +1,20 @@
 let restaurants,
     neighborhoods,
     cuisines
-var newMap
-var markers = []
+var newMap // leaflet 地图实例
+var markers = [] // 地图打标集合
 
-/**
- * Fetch neighborhoods and cuisines as soon as the page is loaded.
- */
+// 页面加载就绪后，立即获取街道和菜系的选项
 document.addEventListener('DOMContentLoaded', (event) => {
-    initMap(); // added 
+    initMap(); 
     fetchNeighborhoods();
     fetchCuisines();
 });
 
 /**
- * Fetch all neighborhoods and set their HTML.
+ * 获取所有街道信息，并填充到相应的下拉框
  */
-fetchNeighborhoods = () => {
+const fetchNeighborhoods = () => {
     DBHelper.fetchNeighborhoods((error, neighborhoods) => {
         if (error) { // Got an error
             console.error(error);
@@ -28,9 +26,9 @@ fetchNeighborhoods = () => {
 }
 
 /**
- * Set neighborhoods HTML.
+ * 填充街道的筛选选项
  */
-fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
+const fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     const select = document.getElementById('neighborhoods-select');
     neighborhoods.forEach(neighborhood => {
         const option = document.createElement('option');
@@ -41,9 +39,9 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
 }
 
 /**
- * Fetch all cuisines and set their HTML.
+ * 获取所有菜系信息，并填充到相应的下拉框
  */
-fetchCuisines = () => {
+const fetchCuisines = () => {
     DBHelper.fetchCuisines((error, cuisines) => {
         if (error) { // Got an error!
             console.error(error);
@@ -55,9 +53,9 @@ fetchCuisines = () => {
 }
 
 /**
- * Set cuisines HTML.
+ * 填充菜系的筛选选项
  */
-fillCuisinesHTML = (cuisines = self.cuisines) => {
+const fillCuisinesHTML = (cuisines = self.cuisines) => {
     const select = document.getElementById('cuisines-select');
 
     cuisines.forEach(cuisine => {
@@ -69,9 +67,9 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 }
 
 /**
- * Initialize leaflet map, called from HTML.
+ * 初始化 leaflet 地图库，并准备刷新餐厅列表
  */
-initMap = () => {
+const initMap = () => {
     self.newMap = L.map('map', {
         center: [40.722216, -73.987501],
         zoom: 12,
@@ -90,9 +88,9 @@ initMap = () => {
 }
 
 /**
- * Update page and map for current restaurants.
+ * 更新当前餐厅的页面和地图
  */
-updateRestaurants = () => {
+const updateRestaurants = () => {
     const cSelect = document.getElementById('cuisines-select');
     const nSelect = document.getElementById('neighborhoods-select');
 
@@ -113,9 +111,9 @@ updateRestaurants = () => {
 }
 
 /**
- * Clear current restaurants, their HTML and remove their map markers.
+ * 清除当前餐厅， 并从列表中移除其地图标记
  */
-resetRestaurants = (restaurants) => {
+const resetRestaurants = (restaurants) => {
     // Remove all restaurants
     self.restaurants = [];
     const ul = document.getElementById('restaurants-list');
@@ -130,9 +128,9 @@ resetRestaurants = (restaurants) => {
 }
 
 /**
- * Create all restaurants HTML and add them to the webpage.
+ * 创建全部餐厅列表项到页面
  */
-fillRestaurantsHTML = (restaurants = self.restaurants) => {
+const fillRestaurantsHTML = (restaurants = self.restaurants) => {
     const ul = document.getElementById('restaurants-list');
     restaurants.forEach(restaurant => {
         ul.append(createRestaurantHTML(restaurant));
@@ -141,9 +139,9 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 }
 
 /**
- * Create restaurant HTML.
+ * 构建餐厅列表项
  */
-createRestaurantHTML = (restaurant) => {
+const createRestaurantHTML = (restaurant) => {
     const li = document.createElement('li');
 
     const image = document.createElement('img');
@@ -172,9 +170,9 @@ createRestaurantHTML = (restaurant) => {
 }
 
 /**
- * Add markers for current restaurants to the map.
+ * 将当前餐厅的标记加入到地图中
  */
-addMarkersToMap = (restaurants = self.restaurants) => {
+const addMarkersToMap = (restaurants = self.restaurants) => {
     restaurants.forEach(restaurant => {
         // Add marker to the map
         const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
