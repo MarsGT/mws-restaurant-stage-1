@@ -36,6 +36,17 @@
         </section>
     </main>
 
+    <script>
+        'use strict';
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/js/sw.js').then(function (reg) {
+                console.info(`Registration:succeeded. [Scope: ${reg.scope}]`);
+            }).catch(function (err) {
+                console.error(`Registration:failed. [Info: ${err}]`);
+            });
+        }
+    </script>
+
     <script src="//cdn.bootcss.com/leaflet/1.4.0/leaflet.js"></script>
     <script src="js/dbhelper.js"></script>
     <script src="js/main.js"></script>
